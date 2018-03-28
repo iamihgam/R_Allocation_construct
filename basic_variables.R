@@ -22,10 +22,10 @@ basic_variables <- function(U, V, G,...){ # calculate intermediate variables fro
   
   
   #Step 1: assigning G variable
-  ext <- vector(mode="numeric", length=0)
+  ext <- vector(mode="numeric", length=0) #  can also be ext <- NULL 
   
   #Step2 : Traceability and dimension
-  com <- nrow(V)
+  com <- nrow(V) # number of rows of supply table
   ind <- ncol(V)
   if (ndim(U) == ndim(V)){ # Untraceable
     traceable <- FALSE
