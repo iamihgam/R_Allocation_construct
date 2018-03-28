@@ -1,5 +1,5 @@
 # R_Allocation_construct
-R scripts for the allocation and constructs in environmental life cycle assessments
+R scripts for allocation and constructs in environmental life cycle assessments: LCA, hybrid LCIA, EIO-LCA etc.
 This repository is intended to bring the python and matlab scripts of Allocation and Constructs 
 for LCA by Guillaume Majeau-Bettez et al. 2013
 
