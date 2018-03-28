@@ -2,8 +2,8 @@
 R scripts for the R_Allocation_construct
 This repository is intended to bring the python and matlab scripts of Allocation and Constructs 
 for LCA by Guillaume Majeau-Bettez et al. 2013
-Link : 
-https://github.com/majeau-bettez/allocation_construct
+
+Link : https://github.com/majeau-bettez/allocation_construct
 
 Source articles:
 a. Majeau-Bettez, G., R. Wood, and A.H. Strømman. 2014. Unified Theory of Allocations and Constructs in Life Cycle Assessment 
