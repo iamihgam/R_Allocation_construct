@@ -48,7 +48,7 @@ basic_variables <- function(U, V, G,...){ # calculate intermediate variables fro
   q <- V %*% e_ind
   
   #Step 5
-  bv_out <-  list(com=com, ind=ind, org=org, traceable=traceable, e_com=e_com, e_ind=e_ind, q=q, g=g, ext=ext)
-  bv_out
+  BV <-  list(com=com, ind=ind, org=org, traceable=traceable, e_com=e_com, e_ind=e_ind, q=q, g=g, ext=ext)
+  BV
 }
   
