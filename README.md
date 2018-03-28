@@ -13,5 +13,4 @@ and Input-Output Analysis. Journal of Industrial Ecology 18(5): 747–770. 10.11
 b.Majeau-Bettez, G., R. Wood, E.G. Hertwich, and A.H. Strømman. 2014. When do allocations and constructs respect material,
 energy, financial, and production balances in LCA and EEIO? Journal of Industrial Ecology In Press: In Press.
 
-A line
-A line
+
