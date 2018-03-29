@@ -44,7 +44,7 @@ pa <- function(U, V, PSI, PHI=NULL, G=NULL,...){
       }
     } 
  }
-  # normalize the system function
+
   # matrixNormalizer (Z,V) -> (A, nn_in, nn_out)
  #partitioning of environmental extensions
  Z
