@@ -1,5 +1,5 @@
 pa <- function(U, V, PSI, PHI=NULL, G=NULL,...){
-  #Take  SuUt or StUt Inventory, performs partition allocation and give intermediate matrix Z
+#Take  SuUt or StUt Inventory, performs partition allocation and give intermediate matrix Z
 
 # Input parameters
 # U : Use table [com, ind] or [org, com, ind]
@@ -22,25 +22,25 @@ pa <- function(U, V, PSI, PHI=NULL, G=NULL,...){
   F <- NULL
   
  #Basic variables
- basic_variables(U, V, G)  -> BV              #gives an output of list which is BV[c("com", "ind", "org", "traceable","e_com","e_ind","q","g")]
+ basic_variables(U, V, G)  -> BV                            #gives an output of list which is BV[c("com", "ind", "org", "traceable","e_com","e_ind","q","g")]
  #BV[c("com", "ind", "org", "traceable")] 
  
  #calculating PHI
  if(is.null(PHI)) {PHI <- partCoeff(V, PSI)}
  
  # Partitioning of product flows
- if(BV["traceable"] == FALSE) {                 # for a SuUT, untraceable supply origin table
-  Z <- array(0,c(BV$ind, BV$com, BV$com))       #[matRows= BV$ind, matCols = BV$com,arrayRows= BV$com] (in python [array.rows, matrows, matcolumns])
+ if(BV["traceable"] == FALSE) {                            # for a SuUT, untraceable supply origin table
+  Z <- array(0,c(BV$ind, BV$com, BV$com))                  #[matRows= BV$ind, matCols = BV$com,arrayRows= BV$com] (in python [array.rows, matrows, matcolumns])
       #Calculate Z 
       for (J in seq_along(1:BV$ind)) {
-          Z[J,,] <- aperm(outer(U[,J],PHI[J,]))   #R, Fortran and Matlab uses Column-major order, therefore aperm(transpose) of array is performed
+          Z[J,,] <- aperm(outer(U[,J],PHI[J,]))            #R, Fortran and Matlab uses Column-major order, therefore aperm(transpose) of array is performed
       }}
- else {                                             # Where BV["traceable"] == TRUE && BV$org = nrow(U)
-   Z <- array(0,c(BV$ind, BV$com, BV$org, BV$com))  #[matRows= BV$ind, matCols = BV$com,arrayRows= BV$org, arrayCols=BV$com] in python[arrayRows, arrayCols, matRows, matCols]
+ else {                                                    # Where BV["traceable"] == TRUE && BV$org = nrow(U)
+   Z <- array(0,c(BV$ind, BV$com, BV$org, BV$com))         #[matRows= BV$ind, matCols = BV$com,arrayRows= BV$org, arrayCols=BV$com] in python[arrayRows, arrayCols, matRows, matCols]
     for(I in seq_along(1:BV$org)){
       for(J in seq_along(1:BV$ind)){
         #eq: PAtrace
-        Z[J, ,I,] <- aperm(outer(U[,J, I], PHI[J,])) #Z[matrows=J, matcols, array.rows=I, array.cols]; U[matRows, matCols=J, arrayRows=I]; PHI[matRows=J, matCols]
+        Z[J, ,I,] <- aperm(outer(U[,J, I], PHI[J,]))       #Z[matrows=J, matcols, array.rows=I, array.cols]; U[matRows, matCols=J, arrayRows=I]; PHI[matRows=J, matCols]
       }
       #Check the validity of this function in python and R
     } 
@@ -49,6 +49,5 @@ pa <- function(U, V, PSI, PHI=NULL, G=NULL,...){
   # matrixNormalizer (Z,V) -> (A, nn_in, nn_out)
  
  #partitioning of environmental extensions
-
- 
+ Z
   }
