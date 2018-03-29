@@ -42,12 +42,10 @@ pa <- function(U, V, PSI, PHI=NULL, G=NULL,...){
         #eq: PAtrace
         Z[J, ,I,] <- aperm(outer(U[,J, I], PHI[J,]))       #Z[matrows=J, matcols, array.rows=I, array.cols]; U[matRows, matCols=J, arrayRows=I]; PHI[matRows=J, matCols]
       }
-      #Check the validity of this function in python and R
     } 
  }
   # normalize the system function
   # matrixNormalizer (Z,V) -> (A, nn_in, nn_out)
- 
  #partitioning of environmental extensions
  Z
   }
