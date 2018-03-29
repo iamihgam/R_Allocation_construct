@@ -19,8 +19,8 @@ basic_variables <- function(U, V, G,...){ # calculate intermediate variables fro
   #Requirement functions
   ndim <- function(x){length(dim(x))} #1 for vector,  2 for matrix , 3 and more for array
   dimsize <- function(x){ prod(dim(x))} # number of elements e.g. 0 - vector , 1 or >1 - 2d or 3d matrix
-  dim(x) # give the dimension of a matrix equivalent to shape in python
-  ncol() and nrow() # always gives the no of rows and no of columns in a matrix
+  #dim(x)  give the dimension of a matrix equivalent to shape in python
+  #ncol() and nrow() # always gives the no of rows and no of columns in a matrix
   arraysize <- function(x){ # for dimensions  greater than 2 espfor 3d and 4d arrays
     if(ndim(x) == 3){ dimsize(x)/prod(nrow(x),ncol(x))}
     else if(ndim(x) == 4) { dimsize(x)/prod(nrow(x),ncol(x),dim(x)[ndim(x)-1])}
