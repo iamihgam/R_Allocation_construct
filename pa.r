@@ -15,8 +15,12 @@ pa <- function(U, V, PSI, PHI=NULL, G=NULL,...){
 # nn_out : filter to remove np.empty columns in A or Z [ind*com]
 # G_all : Allocated emissions [ext,ind,com]
 # F : Normalized, allocated emissions [ext, com*ind]
-  #Required dependencies
+ 
+   #Required dependencies
   library(magrittr)
+  #partCoeff()
+  #basic_variables()
+  
   #default values
   G_all <- NULL
   F <- NULL
