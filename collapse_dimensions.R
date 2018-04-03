@@ -1,7 +1,7 @@
 collapse_dimensions <- function(X){
   # For a 4d array, array rows and array columns are combined to a 3d array
-  #Further, the 3d arrays , the rows and columns are further combined to a 3d array
-  # significant changes in the way 4d matrices are handled compared to python and matlab scripts
+  # Further, for the 3d array, the rows and columns are further combined to a 2d array
+  # significant changes  are made in the handling of  4d matrices compared to python and matlab scripts
   
   #Input
   #X : 3d or 4d array to be collapsed
@@ -25,7 +25,7 @@ collapse_dimensions <- function(X){
       Y[, ,ORG] = aperm(X3d[ , ,ORG])                     }
     }
     else {Y = X}
-  # check the results for Z
+  # check the results for Z and samp
   
   
 }
