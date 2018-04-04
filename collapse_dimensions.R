@@ -1,13 +1,13 @@
-collapse_dimensions <- function(X){
+collapse_dimensions <- function(X,first2dim=FALSE,...){
   # For a 4d array, array rows and array columns are combined to a 3d array
   # Further, for the 3d array, the rows and columns are further combined to a 2d array
-  # significant changes  are made in the handling of  4d matrices compared to python and matlab scripts
+  # A No loop code is proposed in this method compared to python and matlab scripts
+  # In R it is also possible to propose a oneline code for this, see collapse_dimensions_1 :) 
   
   #Input
   #X : 3d or 4d array to be collapsed
-    
   #Output
-    #Z : Flatened 2d array
+  #X2d : Flatened 2d array
   
   #Required functions
   #ndim 
@@ -15,17 +15,27 @@ collapse_dimensions <- function(X){
   
   # For a 4d array convert to 3d array...
     if (ndim(X) == 4){
-    org <-arraysize(X, 1)
-    com <- arraysize(X, 2)
-    ind <- nrow(X) 
-    X3d <- array(X, dim=c(com, ind, org*com))  #converting 4d into  3d with nrow:com, ncol:ind, arraysize = org*com
-    Y <- array(0, dim=c(ind, com,org * com))  #creating an empty array with nrow:ind, ncol:com, arraysize=org*com
-    org_3d <- arraysize(X3d, 1)
-    for (ORG  in seq_along(1:org_3d)){
-      Y[, ,ORG] = aperm(X3d[ , ,ORG])                     }
-    }
-    else {Y = X}
-  # check the results for Z and samp
-  
+      org <-arraysize(X, 1) #4 
+      com <- arraysize(X, 2) #3
+      ind <- nrow(X) #4
+      X3d <- array(aperm(X, c(1,2,4,3)),dim=c(ind,com,org * com))
   
 }
+  
+  if(ndim(X3d == 3) && first2dim == TRUE){
+    org <- arraysize(X3d, 1)
+    ind <- nrow(X3d) #  rows are  industries
+    com <- ncol(X3d) # and columns are products
+    X2d <- aperm(array(X3d, dim=c(com, org*ind)),c(2,1)) # exchanging the rows and columns as vice- versa since  a transpose is applied , because R is a Column Major language
+  }
+  else if(ndim(X3d == 3)){
+    org <- arraysize(X3d, 1)
+    ind <- nrow(X3d)
+    com <- ncol(X3d)
+    X2d <- aperm(array(X3d, dim=c(org, ind*com)), c(2,1))
+  }
+  else if(ndim(X3d == 2)){ warning("Already 2 dimensional")}
+  else{cat("Problem? ndim(Y) =", as.character(ndim(X3d)))}
+  X2d
+}
+ 
