@@ -2,7 +2,7 @@ collapse_dimensions <- function(X,first2dim=FALSE,...){
   # For a 4d array, array rows and array columns are combined to a 3d array
   # Further, for the 3d array, the rows and columns are further combined to a 2d array
   # A No loop code is proposed in this method compared to python and matlab scripts
-  # In R it is also possible to propose a oneline code for this, see collapse_dimensions_1 :) 
+  # In R it is also possible to write a oneline code for this, see collapse_dimensions_1 
   
   #Input
   #X : 3d or 4d array to be collapsed
@@ -26,7 +26,7 @@ collapse_dimensions <- function(X,first2dim=FALSE,...){
     org <- arraysize(X3d, 1)
     ind <- nrow(X3d) #  rows are  industries
     com <- ncol(X3d) # and columns are products
-    X2d <- aperm(array(X3d, dim=c(com, org*ind)),c(2,1)) # exchanging the rows and columns as vice- versa since  a transpose is applied , because R is a Column Major language
+    X2d <- aperm(array(X3d, dim=c(com, org*ind)),c(2,1)) 
   }
   else if(ndim(X3d == 3)){
     org <- arraysize(X3d, 1)
