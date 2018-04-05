@@ -13,7 +13,7 @@ arraysize <- function(x, margin){ # for dimensions  greater than 2 espfor 3d and
 }
 #robust diagnolization
 ddiag <- function(x){ # robust diagnolization
-  if(ndim(x) ==0){diag(x)}    # where x is a vector
+  if(ndim(x) == 1){diag(x)}    # where x is a vector
   else if (ndim(x) == 2 && mindim(x) == 1) {diag(as.vector(x))} # where x is a matrix with a column or a row
   else if (ndim(x) == 2 && mindim(x) != 1){diag(diag(x))} # where x is a matrix with more than a column or a row
   else {warning("Input must be 1- or 2- dimensional")}
