@@ -45,7 +45,7 @@ matrixNormalizer <- function(Z, V,...){
   else { 
     nn_out <- array(TRUE, ncol(Z))
     A <- Z %*% solve(ddiag(q_tr))}
-  n
+  
   # Return
    list(A=A, nn_in= nn_in, nn_out= nn_out) 
   }
