@@ -13,6 +13,9 @@ matrixNormalizer <- function(Z, V,...){
   # nn_in : filter applied to rows (0 for removed rows, 1 for kept rows)
   # nn_out : filter applied to cols (0 for removed cols, 1 for kept cols)
   
+  #dependent packages
+  library(Matrix)
+  
   # Collapse dimensions
   if(ndim(Z)>2){Z <- collapse_dimensions(Z)}
     
@@ -42,7 +45,7 @@ matrixNormalizer <- function(Z, V,...){
   else { 
     nn_out <- array(TRUE, ncol(Z))
     A <- Z %*% solve(ddiag(q_tr))}
-  
+  n
   # Return
    list(A=A, nn_in= nn_in, nn_out= nn_out) 
   }

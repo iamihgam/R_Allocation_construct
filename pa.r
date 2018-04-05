@@ -48,7 +48,21 @@ pa <- function(U, V, PSI, PHI=NULL, G=NULL,...){
       }
     } 
  }
-  # matrixNormalizer (Z,V) -> (A, nn_in, nn_out)
- #partitioning of environmental extensions
- Z
+  
+ # matrixNormalizer (Z,V) -> (A, nn_in, nn_out)
+ matrixNormalizer(Z, V) -> MN # holds a list MN$A, MN$nn_in, MN$nn_out
+ 
+ #Allocation of environmental extensions
+ if (dimsize(G)!= 0){
+   G_all <- array(0, dim=c(ind, com,BV$ext))
+   for (J in seq_along(1:ind)){
+     G_all[J,,] <- aperm(outer(G[,J], PHI[J,]))
+   }}
+  
+ #Normalize environmental extensions
+   matrixNormalizer(G_all, V) -> MNe
+   
+  
+ # Return results
+   list(Z=Z, A=MN$A, nn_in = MN$nn_in, nn_out= MN$nn_out, G_all= G_all, F=MNe$A)
   }

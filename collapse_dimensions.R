@@ -26,13 +26,13 @@ collapse_dimensions <- function(X,first2dim=FALSE,...){
     org <- arraysize(X3d, 1)
     ind <- nrow(X3d) #  rows are  industries
     com <- ncol(X3d) # and columns are products
-    X2d <- array(aperm(X, c(3,2,1)), dim=c(com, org*ind))
+    X2d <- array(aperm(X3d, c(3,2,1)), dim=c(com, org*ind))
   }
   else if(ndim(X3d == 3)){
     org <- arraysize(X3d, 1)
     ind <- nrow(X3d)
     com <- ncol(X3d)
-    X2d <- array(aperm(X, c(3,2,1)), dim=c(org, ind*com))
+    X2d <- array(aperm(X3d, c(3,2,1)), dim=c(org, ind*com))
   }
   else if(ndim(X3d == 2)){ warning("Already 2 dimensional")}
   else{cat("Problem? ndim(Y) =", as.character(ndim(X3d)))}
